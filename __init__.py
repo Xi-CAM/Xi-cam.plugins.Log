@@ -8,8 +8,7 @@ from xicam.core import msg
 colors = {msg.DEBUG: Qt.gray, msg.ERROR: Qt.darkRed, msg.CRITICAL: Qt.red,
           msg.INFO: Qt.white, msg.WARNING: Qt.yellow}
 
-from .. import GUIPlugin
-from ..GUIPlugin import GUILayout
+from xicam.plugins import GUIPlugin, GUILayout
 
 
 class LogPlugin(GUIPlugin):

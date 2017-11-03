@@ -1,5 +1,5 @@
 [Core]
-Name = IPython
+Name = Log
 Module = __init__.py
 
 [Documentation]
