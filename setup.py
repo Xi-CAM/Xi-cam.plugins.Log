@@ -6,7 +6,7 @@ Usage: pip install -e .
        twine upload dist/*
 """
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='xicam.plugins.log',
@@ -55,7 +55,7 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=['xicam.plugins.log'],
 
     package_dir={},
 
