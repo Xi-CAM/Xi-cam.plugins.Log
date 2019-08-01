@@ -6,27 +6,25 @@ from qtpy.QtGui import *
 from qtpy.QtWidgets import *
 
 from xicam.core import msg
-
-colors = {msg.DEBUG: Qt.gray, msg.ERROR: Qt.darkRed, msg.CRITICAL: Qt.red,
-          msg.INFO: Qt.white, msg.WARNING: Qt.yellow}
-
 from xicam.plugins import GUIPlugin, GUILayout
+
+colors = {msg.DEBUG: Qt.gray, msg.ERROR: Qt.darkRed, msg.CRITICAL: Qt.red, msg.INFO: Qt.white, msg.WARNING: Qt.yellow}
 
 
 class BlacklistFilter(logging.Filter):
-    blacklist = ['ipykernel.inprocess.ipkernel', 'traitlets']
+    blacklist = ["ipykernel.inprocess.ipkernel", "traitlets"]
 
     def filter(self, record):
         return record.name not in self.blacklist
 
 
 class LogPlugin(GUIPlugin, logging.Handler):
-    name = 'Log'
+    name = "Log"
     sigLog = Signal(int, str, str, np.ndarray)
 
     def __init__(self, *args, **kwargs):
         self.logwidget = QListWidget()
-        self.stages = {'Log': GUILayout(self.logwidget)}
+        self.stages = {"Log": GUILayout(self.logwidget)}
         super(LogPlugin, self).__init__(*args, **kwargs)
         logging.Handler.__init__(self)
         self.level = msg.DEBUG
