@@ -35,7 +35,7 @@ class LogPlugin(GUIPlugin, logging.Handler):
         logging.getLogger().addHandler(self)
 
     def emit(self, record, level=msg.INFO, timestamp=None, image=None, icon=None):  # We can have icons!
-        item = QListWidgetItem(record.msg)
+        item = QListWidgetItem(str(record.msg))
         item.setForeground(QBrush(colors[record.levelno]))
         item.setToolTip(timestamp)
         self.logwidget.addItem(item)
