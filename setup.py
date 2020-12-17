@@ -9,12 +9,12 @@ Usage: pip install -e .
 from setuptools import setup
 
 setup(
-    name='xicam.plugins.log',
+    name='xicam.logplugin',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1.0',
+    version='0.1.1',
 
     description='The CAMERA platform for synchrotron data management, visualization, and reduction. The xicam.gui '
                 'package contains all gui code of the Xi-cam platform, as part of the xicam namespace package. For the '
@@ -55,7 +55,7 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=['xicam.plugins.log'],
+    packages=['xicam.logplugin'],
 
     package_dir={},
 
@@ -83,7 +83,6 @@ setup(
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
-    package_data={'xicam.plugins.log': ['*.yapsy-plugin']},
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
@@ -95,7 +94,11 @@ setup(
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
-    entry_points={},
+    entry_points={
+        'xicam.plugins.GUIPlugin': [
+            'logging = xicam.logplugin:LogPlugin'
+        ],
+    },
 
     ext_modules=[],
     include_package_data=True
