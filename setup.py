@@ -9,7 +9,7 @@ Usage: pip install -e .
 from setuptools import setup
 
 setup(
-    name='xicam.logplugin',
+    name='xicam.log',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -55,7 +55,7 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=['xicam.logplugin'],
+    packages=['xicam.log'],
 
     package_dir={},
 
@@ -96,7 +96,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'xicam.plugins.GUIPlugin': [
-            'logging = xicam.logplugin:LogPlugin'
+            'logging = xicam.log:LogPlugin'
         ],
     },
 
