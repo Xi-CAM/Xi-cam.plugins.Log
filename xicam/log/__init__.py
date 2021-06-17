@@ -35,10 +35,10 @@ class LogPlugin(GUIPlugin, logging.Handler):
         logging.getLogger().addHandler(self)
 
     def emit(self, record, level=msg.INFO, timestamp=None, image=None, icon=None):  # We can have icons!
-        item = QListWidgetItem(str(record.msg))
+        item = QListWidgetItem(record.getMessage())
         item.setForeground(QBrush(colors[record.levelno]))
         item.setToolTip(timestamp)
-        self.logwidget.addItem(item)
+        self.logwidget.insertItem(0, item)
         if image is not None:
             image = np.uint8((image - image.min()) / image.ptp() * 255.0)
             pixmap = QPixmap.fromImage(QImage(image, image.shape[0], image.shape[1], QImage.Format_Indexed8))
@@ -50,3 +50,5 @@ class LogPlugin(GUIPlugin, logging.Handler):
             i.setSizeHint(w.sizeHint())
             self.logwidget.addItem(i)
             self.logwidget.setItemWidget(i, w)
+        while self.logwidget.count() > 100:
+            self.logwidget.takeItem(self.logwidget.count() - 1)
